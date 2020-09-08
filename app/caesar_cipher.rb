@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Implementation of the ceasar code
 class CaesarCipher
-  puts 'hello world'
+  def caesar_cipher(message, shift); end
 end

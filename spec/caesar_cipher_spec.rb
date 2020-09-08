@@ -1,11 +1,17 @@
+# frozen_string_literal: true
+
 require 'rspec'
 
 require_relative '../app/caesar_cipher'
 
 RSpec.describe CaesarCipher do
+  let(:message) { 'Hello there' }
+  let(:shift) { 5 }
+  let(:coded_message) { 'Mjqqt ymjwj' }
+
   describe '#caesar_cipher' do
     it 'does something' do
-      expect(1).to eql(1)
+      expect(subject.caesar_cipher(message, shift)).to eql(coded_message)
     end
   end
 end
