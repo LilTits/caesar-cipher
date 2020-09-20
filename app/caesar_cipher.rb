@@ -2,20 +2,24 @@
 
 # Implementation of the ceasar code
 class CaesarCipher
-  ALPHABET = %w[a b c d e f g h i j k l m n o p q r s t u v w x y z].freeze
+  ALPHABET = ('a'..'z').to_a
 
   def caesar_cipher(message, shift)
     split_array = message.split(//)
+    new_message = []
     split_array.each do |char|
       if char == ' '
-        puts 'space'
+        new_message << ' '
       elsif ALPHABET.include?(char)
-        puts ALPHABET.index(char) + shift
+        new_letter = ALPHABET.index(char) + shift
+        new_message << ALPHABET[new_letter]
       elsif ALPHABET.include?(char.downcase)
-        puts ALPHABET.index(char.downcase) + shift
+        new_letter = ALPHABET.index(char.downcase) + shift
+        new_message << ALPHABET[new_letter].upcase
       else
         puts 'idk'
       end
     end
+    new_message.join
   end
 end
