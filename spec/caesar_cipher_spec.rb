@@ -10,7 +10,7 @@ RSpec.describe CaesarCipher do
   let(:coded_message) { 'Mjqqt ymjwj' }
 
   describe '#caesar_cipher' do
-    it 'does something' do
+    it 'encrypt a message' do
       expect(subject.caesar_cipher(message, shift)).to eql(coded_message)
     end
   end
