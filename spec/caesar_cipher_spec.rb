@@ -6,6 +6,7 @@ require_relative '../app/caesar_cipher'
 
 RSpec.describe CaesarCipher do
   let(:message) { 'Hello there' }
+  let(:test) { 'xyz' }
   let(:shift) { 5 }
   let(:coded_message) { 'Mjqqt ymjwj' }
 

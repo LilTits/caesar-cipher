@@ -12,9 +12,15 @@ class CaesarCipher
     split_array.each do |char|
       if ALPHABET.include?(char)
         new_letter_position = ALPHABET.index(char) + shift
+        if ALPHABET.length < new_letter_position
+          new_letter_position = new_letter_position - ALPHABET.length        
+        end
         new_message << ALPHABET[new_letter_position]
       elsif MAJ_ALPHABET.include?(char)
         new_letter_position = MAJ_ALPHABET.index(char) + shift
+        if MAJ_ALPHABET.length < new_letter_position
+          number = new_letter_position - ALPHABET.length        
+        end
         new_message << MAJ_ALPHABET[new_letter_position]
       else
         new_message << char
@@ -32,9 +38,15 @@ class CaesarCipher
     split_array.each do |char|
       if ALPHABET.include?(char)
         new_letter_position = ALPHABET.index(char) + unshift
+        if ALPHABET.length < new_letter_position
+          new_letter_position = new_letter_position - ALPHABET.length        
+        end
         new_message << ALPHABET[new_letter_position]
       elsif MAJ_ALPHABET.include?(char)
         new_letter_position = MAJ_ALPHABET.index(char) + unshift
+        if MAJ_ALPHABET.length < new_letter_position
+          new_letter_position = new_letter_position - ALPHABET.length        
+        end
         new_message << MAJ_ALPHABET[new_letter_position]
       else
         new_message << char
