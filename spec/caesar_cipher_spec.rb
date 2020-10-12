@@ -8,6 +8,7 @@ RSpec.describe CaesarCipher do
   let(:message) { 'Hello there' }
   let(:test) { 'xyz' }
   let(:shift) { 5 }
+  let(:unshift) { -5 }
   let(:coded_message) { 'Mjqqt ymjwj' }
 
   describe '#encode' do
@@ -18,7 +19,7 @@ RSpec.describe CaesarCipher do
 
   describe '#decode' do
     it 'decrypt a message' do
-      expect(subject.decode(coded_message, shift)).to eql(message)
+      expect(subject.decode(coded_message, unshift)).to eql(message)
     end
   end
 end
