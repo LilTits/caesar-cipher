@@ -45,6 +45,7 @@ class CaesarCipher
   end
 end
 
-# jules = CaesarCipher.new
-# message = jules.decode('oh kdfkdjh yrxv shuphwwudlw gdvvxuhu od frqilghqwldolwh vlpsohphqw', 3)
-# puts message
+jules = CaesarCipher.new
+26.times do |x|
+  puts jules.decode('oh kdfkdjh yrxv shuphwwudlw gdvvxuhu od frqilghqwldolwh vlpsohphqw', x)
+end
