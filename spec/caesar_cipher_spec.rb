@@ -5,11 +5,12 @@ require 'rspec'
 require_relative '../app/caesar_cipher'
 
 RSpec.describe CaesarCipher do
-  let(:message) { 'Hello there' }
-  let(:test) { 'xyz' }
-  let(:shift) { 5 }
-  let(:unshift) { -5 }
-  let(:coded_message) { 'Mjqqt ymjwj' }
+  let(:message) { 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' }
+  let(:message_2) { 'xXYZ' }
+  let(:shift) { 3 }
+  let(:unshift) { -3 }
+  let(:coded_message) { 'defghijklmnopqrstuvwxyzabcDEFGHIJKLMNOPQRSTUVWXYZABC' }
+  let(:coded_message_2) { 'aABC' }
 
   describe '#encode' do
     it 'encrypt a message' do
