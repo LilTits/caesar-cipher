@@ -29,13 +29,13 @@ class CaesarCipher
 
     split_message.each do |char|
       if ALPHABET.include?(char)
-        new_letter_position = ALPHABET.index(char) + shift
-        new_letter_position -= ALPHABET.length if ALPHABET.length < new_letter_position
-        new_message << ALPHABET[new_letter_position]
+        letter_position = ALPHABET.index(char) + shift
+        fixed_position = letter_position % ALPHABET_SIZE
+        new_message << ALPHABET[fixed_position]
       elsif MAJ_ALPHABET.include?(char)
-        new_letter_position = MAJ_ALPHABET.index(char) + shift
-        new_letter_position - ALPHABET.length if MAJ_ALPHABET.length < new_letter_position
-        new_message << MAJ_ALPHABET[new_letter_position]
+        letter_position = MAJ_ALPHABET.index(char) + shift
+        fixed_position = letter_position % ALPHABET_SIZE
+        new_message << MAJ_ALPHABET[fixed_position]
       else
         new_message << char
       end
