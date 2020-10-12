@@ -4,6 +4,7 @@
 class CaesarCipher
   ALPHABET = ('a'..'z').to_a
   MAJ_ALPHABET = ('A'..'Z').to_a
+  ALPHABET_SIZE = 26
 
   def encode(message, shift)
     split_message = split_text(message)
