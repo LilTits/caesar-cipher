@@ -9,10 +9,10 @@ Start by cloning the repository
 
 Then you can navigate to it and run
 
-  bundle install
+    bundle install
 
 You can now run the specs with
 
-  rspec
+    rspec
 
 Happy coding !!!
