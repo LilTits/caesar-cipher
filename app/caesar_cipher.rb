@@ -2,20 +2,19 @@
 
 # Implementation of the ceasar code
 class CaesarCipher
-  ALPHABET = ('a'..'z').to_a
+  def initialize(message, shift)
+    @message = message
+    @shift = shift
+  end
+
+  MIN_ALPHABET = ('a'..'z').to_a
   MAJ_ALPHABET = ('A'..'Z').to_a
   ALPHABET_SIZE = 26
 
-  def encode(message, shift)
-    split_message = split_text(message)
+  def encode
+    split_message = split_text(@message)
 
-    shift_key(split_message, shift)
-  end
-
-  def decode(message, unshift)
-    split_message = split_text(message)
-
-    shift_key(split_message, unshift)
+    shift(split_message)
   end
 
   private
@@ -24,28 +23,25 @@ class CaesarCipher
     split_message.split(//)
   end
 
-  def shift_key(split_message, shift)
+  def shift(split_message)
     new_message = []
 
     split_message.each do |char|
-      if ALPHABET.include?(char)
-        letter_position = ALPHABET.index(char) + shift
-        fixed_position = letter_position % ALPHABET_SIZE
-        new_message << ALPHABET[fixed_position]
-      elsif MAJ_ALPHABET.include?(char)
-        letter_position = MAJ_ALPHABET.index(char) + shift
-        fixed_position = letter_position % ALPHABET_SIZE
-        new_message << MAJ_ALPHABET[fixed_position]
-      else
-        new_message << char
-      end
+      new_message << if MIN_ALPHABET.include?(char)
+                       find_replace(MIN_ALPHABET, char)
+                     elsif MAJ_ALPHABET.include?(char)
+                       find_replace(MAJ_ALPHABET, char)
+                     else
+                       char
+                     end
     end
 
     new_message.join
   end
-end
 
-jules = CaesarCipher.new
-26.times do |x|
-  puts jules.decode('oh kdfkdjh yrxv shuphwwudlw gdvvxuhu od frqilghqwldolwh vlpsohphqw', x)
+  def find_replace(array, char)
+    letter_position = array.index(char) + @shift
+    fixed_position = letter_position % ALPHABET_SIZE
+    array[fixed_position]
+  end
 end
