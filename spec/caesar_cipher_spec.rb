@@ -6,21 +6,25 @@ require_relative '../app/caesar_cipher'
 
 RSpec.describe CaesarCipher do
   let(:message) { 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' }
-  let(:message_2) { 'xXYZ' }
-  let(:shift) { 3 }
-  let(:unshift) { -3 }
   let(:coded_message) { 'defghijklmnopqrstuvwxyzabcDEFGHIJKLMNOPQRSTUVWXYZABC' }
-  let(:coded_message_2) { 'aABC' }
 
   describe '#encode' do
+    let(:shift) { 3 }
+
+    subject { CaesarCipher.new(message, shift) }
+
     it 'encrypt a message' do
-      expect(subject.encode(message, shift)).to eql(coded_message)
+      expect(subject.encode).to eql(coded_message)
     end
   end
 
   describe '#decode' do
+    let(:shift) { -3 }
+
+    subject { CaesarCipher.new(coded_message, shift) }
+
     it 'decrypt a message' do
-      expect(subject.decode(coded_message, unshift)).to eql(message)
+      expect(subject.decode).to eql(message)
     end
   end
 end
