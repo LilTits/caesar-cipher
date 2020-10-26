@@ -9,22 +9,24 @@ RSpec.describe CaesarCipher do
   let(:coded_message) { 'defghijklmnopqrstuvwxyzabcDEFGHIJKLMNOPQRSTUVWXYZABC' }
 
   describe '#encode' do
-    let(:shift) { 3 }
+    context 'encrypt the message' do
+      let(:shift) { 3 }
 
-    subject { CaesarCipher.new(message, shift) }
+      subject { CaesarCipher.new(message, shift) }
 
-    it 'encrypt a message' do
-      expect(subject.encode).to eql(coded_message)
+      it 'shift by three' do
+        expect(subject.encode).to eql(coded_message)
+      end
     end
-  end
 
-  describe '#decode' do
-    let(:shift) { -3 }
+    context 'decrypt a message' do
+      let(:shift) { -3 }
 
-    subject { CaesarCipher.new(coded_message, shift) }
+      subject { CaesarCipher.new(coded_message, shift) }
 
-    it 'decrypt a message' do
-      expect(subject.decode).to eql(message)
+      it 'unshift by three' do
+        expect(subject.encode).to eql(message)
+      end
     end
   end
 end
