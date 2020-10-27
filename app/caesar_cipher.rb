@@ -17,6 +17,11 @@ class CaesarCipher
     shift(split_message)
   end
 
+  def decode
+    @shift = -@shift
+    encode
+  end
+
   private
 
   def split_text(split_message)
@@ -35,7 +40,6 @@ class CaesarCipher
                        char
                      end
     end
-
     new_message.join
   end
 
